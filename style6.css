@@ -1,0 +1,29 @@
+.navigation{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(255, 0, 0);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+}
+
+.navigation a{
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
+h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 0, 0);
+    font-size: 60px;
+}
+
