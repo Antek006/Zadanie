@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atrakcje Grodziska Wielkopolskiego</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #fff0e6, #ffe6cc);
+      color: #333;
+      padding: 20px;
+      scroll-behavior: smooth;
+      transition: background 0.5s ease;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: slideDown 1s ease-out;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #d1495b;
+    }
+
+    p.description {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #7d2e2e;
+      animation: fadeIn 2s ease-in;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      background-color: #e76f51;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      transition: background 0.4s ease, transform 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #bc4b38;
+      transform: scale(1.05);
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #b63e3e;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .card {
+      background: #fff8f0;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      font-size: 1.4em;
+      color: #b63e3e;
+    }
+
+    .card-content p {
+      margin-top: 8px;
+      color: #5c5c5c;
+      font-size: 0.95em;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 600px;
+      text-align: center;
+      animation: slideUp 0.4s ease;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .modal-content p {
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+
+    .modal-content button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #b63e3e;
+      color: white;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      background-color: #902c2c;
+    }
+
+    .subpage {
+      margin: 30px auto;
+      max-width: 800px;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease;
+    }
+
+    .subpage h3 {
+      margin-bottom: 10px;
+      color: #b63e3e;
+    }
+
+    .subpage p {
+      line-height: 1.6;
+      color: #4e4e4e;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Atrakcje Grodziska Wielkopolskiego</h1>
+    <p class="description">Zobacz, co warto zobaczyć i gdzie dobrze zjeść w naszym mieście!</p>
+  </header>
+
+  <nav>
+    <a href="#attractions">Atrakcje</a>
+    <a href="#restaurants">Restauracje</a>
+    <a href="#info">O Grodzisku</a>
+    <a href="#tips">Porady</a>
+    <a href="#map">Mapa</a>
+    <a href="#gallery">Galeria</a>
+  </nav>
+
+  <section class="section" id="attractions">
+    <h2>Atrakcje turystyczne</h2>
+    <div class="grid" id="attractionsGrid"></div>
+  </section>
+
+  <section class="section" id="restaurants">
+    <h2>Dobre restauracje</h2>
+    <div class="grid" id="restaurantsGrid"></div>
+  </section>
+
+  <section class="section" id="info">
+    <h2>O Grodzisku Wielkopolskim</h2>
+    <div class="subpage">
+      <h3>Podstawowe informacje</h3>
+      <p>📍 Grodzisk Wielkopolski to urocze miasto w zachodniej Polsce, liczące około <strong>14 000 mieszkańców</strong> i zajmujące powierzchnię około <strong>18 km²</strong>.</p>
+
+      <h3>Ciekawostka historyczna</h3>
+      <p>W 1848 roku Grodzisk był jednym z miejsc oporu podczas Wiosny Ludów – miasto miało znaczenie strategiczne i historyczne dla regionu.</p>
+
+      <h3>Znani mieszkańcy</h3>
+      <p>Miasto jest związane z postacią Bernarda z Wąbrzeźna – benedyktyna, który według legendy uświęcił wodę z miejscowej studni.</p>
+
+      <h3>Dlaczego warto odwiedzić?</h3>
+      <p>🌿 Kameralne, spokojne miasteczko z dużą ilością zieleni, pięknym rynkiem, klimatycznymi kawiarniami i gościnną atmosferą. To idealne miejsce na weekendowy wypad!</p>
+    </div>
+  </section>
+
+  <section class="section" id="tips">
+    <h2>Porady turystyczne</h2>
+    <div class="subpage">
+      <h3>Gdzie zaparkować?</h3>
+      <p>Darmowe parkingi przy rynku oraz płatny parking przy Parku Miejskim.</p>
+
+      <h3>Co zabrać ze sobą?</h3>
+      <p>Wygodne buty, aparat fotograficzny, coś na komary – szczególnie latem w okolicach lasu.</p>
+
+      <h3>Kiedy najlepiej przyjechać?</h3>
+      <p>Wiosną i latem odbywa się wiele imprez plenerowych – koncerty, pikniki, jarmarki.</p>
+    </div>
+  </section>
+
+  <section class="section" id="map">
+    <h2>Lokalizacja miasta</h2>
+    <div class="subpage">
+      <h3>Gdzie leży Grodzisk Wielkopolski?</h3>
+      <p>Miasto znajduje się w zachodniej części Polski, w województwie wielkopolskim, około 45 km na południowy zachód od Poznania.</p>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.4696629476373!2d16.361763415824623!3d52.22733096599606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47061e391b74e8db%3A0xd497e3c79c0d64ce!2sGrodzisk%20Wielkopolski!5e0!3m2!1spl!2spl!4v1617625366176!5m2!1spl!2spl" 
+        width="100%" 
+        height="400" 
+        style="border:0; border-radius: 10px; margin-top: 15px;"
+        allowfullscreen="" 
+        loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <h2>Galeria zdjęć</h2>
+    <div class="grid">
+      <img src="zdj1.jpg" alt="Galeria" style="border-radius: 10px; width: 100%; height: auto;">
+      <img src="zdj2.jpg" alt="Galeria" style="border-radius: 10px; width: 100%; height: auto;">
+      <img src="zdj3.jpg" alt="Galeria" style="border-radius: 10px; width: 100%; height: auto;">
+      <img src="zdj4.jpg" alt="Galeria" style="border-radius: 10px; width: 100%; height: auto;">
+    </div>
+  </section>
+
+  <div class="modal" id="modal" style="display: none;">
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="Zdjęcie" />
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+      <button onclick="closeModal()">Zamknij</button>
+    </div>
+  </div>
+
+  <footer>
+    Stronę wykonał - Antoni Banach 4D.
+  </footer>
+
+  <script>
+    const attractions = [
+      {
+        title: "Zabytkowy Rynek",
+        description: "Stary Rynek w Grodzisku Wielkopolskim to serce miasta z historycznym ratuszem i drewnianą studnią Bernarda.",
+        image: "rynek.jpg",
+      },
+      {
+        title: "Park Miejski",
+        description: "Zielona przestrzeń z placem zabaw, alejkami i miejscem do piknikowania. Często odbywają się tu wydarzenia miejskie.",
+        image: "park.jpg",
+      },
+      {
+        title: "Muzeum Ziemi Grodziskiej",
+        description: "Zlokalizowane w zabytkowym pałacu muzeum z ekspozycją historii regionu i pamiątkami z XIX i XX wieku.",
+        image: "muzeum.jpg",
+      },
+      {
+        title: "Wieża Ciśnień",
+        description: "Zabytkowy obiekt techniczny z pięknym widokiem na miasto. Idealne miejsce na zdjęcia panoramiczne.",
+        image: "wieza.jpg",
+      },
+      {
+        title: "Studnia Bernarda",
+        description: "Historyczna studnia związana z legendą o cudownej wodzie, ważna dla browarnictwa w regionie.",
+        image: "studnia.jpg",
+      }
+    ];
+
+    const restaurants = [
+      {
+        title: "Pizzeria Filippo",
+        description: "Pizza z pieca opalanego drewnem – idealna na spotkanie z przyjaciółmi.",
+        image: "pizzeria.jpg",
+      },
+      {
+        title: "Café Kachlicki",
+        description: "Klimatyczna kawiarnia z pyszną kawą, śniadaniami i lodami rzemieślniczymi.",
+        image: "cafe.jpg",
+      },
+      {
+        title: "Bar Dworcowy Grodziszczak",
+        description: "Retro bar z tanim i pysznym jedzeniem – klasyka PRL!",
+        image: "bar.jpg",
+      }
+    ];
+
+    function createCard(item) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" />
+        <div class="card-content">
+          <h3>${item.title}</h3>
+          <p>${item.description.substring(0, 60)}...</p>
+        </div>
+      `;
+      card.addEventListener('click', () => showModal(item));
+      return card;
+    }
+
+    function showModal(item) {
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalDescription').textContent = item.description;
+      document.getElementById('modalImage').src = item.image;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    attractions.forEach(item => {
+      document.getElementById('attractionsGrid').appendChild(createCard(item));
+    });
+
+    restaurants.forEach(item => {
+      document.getElementById('restaurantsGrid').appendChild(createCard(item));
+    });
+  </script>
+</body>
+</html>
